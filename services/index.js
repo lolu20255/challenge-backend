@@ -4,6 +4,15 @@ import listenMock from '../mock-server/index.js';
 
 const fastify = Fastify({ logger: true });
 
+fastify.get('/health', async (request, reply) => {
+    reply.send({
+        status: 'ok',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime(),
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
+
 fastify.get('/getUsers', async (request, reply) => {
     const resp = await fetch('http://event.com/getUsers');
     const data = await resp.json();
