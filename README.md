@@ -104,3 +104,4 @@ ___
 - I would also consider adding integration tests to verify the external service interactions, additionally, I would implement proper monitoring and alerting for the rate limiting and retry mechanisms.
 - I also ran out of time to finalize the entire testing solution for the retry and rate limiting features
 - It would be great to add typescript support and husky for code consistency and quality checks
+- For task number 2 would be ideal to have a cache system like redis or dynamo-db to improve time responses
