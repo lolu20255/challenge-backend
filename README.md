@@ -30,3 +30,4 @@ ___
 - Feature: Added .gitignore file to exclude node_modules, environment files, and log files.
 - Feature: Added environment variable configuration with .env file and dotenv package
 - Feature: Added health check endpoint at /health
+- Feature: Added development server with nodemon for auto-restart during development
