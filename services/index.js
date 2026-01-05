@@ -30,6 +30,7 @@ fastify.post("/addEvent", async (request, reply) => {
       }),
     });
     const data = await resp.json();
+
     reply.send(data);
   } catch (err) {
     reply.error(err);
@@ -39,6 +40,7 @@ fastify.post("/addEvent", async (request, reply) => {
 fastify.get("/getEvents", async (request, reply) => {
   const resp = await fetch("http://event.com/getEvents");
   const data = await resp.json();
+
   reply.send(data);
 });
 
@@ -52,8 +54,10 @@ fastify.get("/getEventsByUserId/:id", async (request, reply) => {
   for (let i = 0; i < userEvents.length; i++) {
     const event = await fetch("http://event.com/getEventById/" + userEvents[i]);
     const eventData = await event.json();
+
     eventArray.push(eventData);
   }
+
   reply.send(eventArray);
 });
 
@@ -64,9 +68,11 @@ fastify.listen({ port: PORT }, (err) => {
   if (process.env.MOCK_SERVER_ENABLED !== "false") {
     listenMock();
   }
+
   if (err) {
     fastify.log.error(err);
     process.exit(1);
   }
+
   console.log(`Server running on port ${PORT} in ${NODE_ENV} mode`);
 });
