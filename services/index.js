@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import Fastify from 'fastify';
 import listenMock from '../mock-server/index.js';
 
@@ -46,10 +47,16 @@ fastify.get('/getEventsByUserId/:id', async (request, reply) => {
     reply.send(eventArray);
 });
 
-fastify.listen({ port: 3000 }, (err) => {
-    listenMock();
+const PORT = process.env.PORT || 3000;
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
+fastify.listen({ port: PORT }, (err) => {
+    if (process.env.MOCK_SERVER_ENABLED !== 'false') {
+        listenMock();
+    }
     if (err) {
       fastify.log.error(err);
-      process.exit();
+      process.exit(1);
     }
+    console.log(`Server running on port ${PORT} in ${NODE_ENV} mode`);
 });
