@@ -89,3 +89,18 @@ ___
 - Discover: Identified performance bottleneck in `/getEventsByUserId` endpoint due to sequential API calls
 - Fix: Implemented parallel API calls using Promise.all to improve performance
 - Feature: Added error handling for individual API call failures while still returning successful results
+
+## Task Three
+- Discover: Identified resilience issue in `/addEvent` endpoint due to dependency on external service that can fail under load
+- Feature: Added detailed documentation of the retry mechanism behavior
+- Feature: Implemented rate limiting to prevent overwhelming the external service
+- Feature: Added error counting and time-based reset logic for resilience
+- Feature: Added retryAfter timestamp to track when the service can accept requests again
+- Feature: Added comprehensive logging for retry and rate limiting events
+- Feature: Added 429 status code with retry-after header for client guidance
+
+## Notes
+- For following development I would add unit tests to validate all endpoints and error scenarios
+- I would also consider adding integration tests to verify the external service interactions, additionally, I would implement proper monitoring and alerting for the rate limiting and retry mechanisms.
+- I also ran out of time to finalize the entire testing solution for the retry and rate limiting features
+- It would be great to add typescript support and husky for code consistency and quality checks
