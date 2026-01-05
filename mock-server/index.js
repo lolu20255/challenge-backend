@@ -1,6 +1,6 @@
-const { http, HttpResponse, delay } = require('msw');
-const { setupServer } = require('msw/node');
-const user = require('./mocks/user.json');
+import { http, HttpResponse, delay } from 'msw';
+import { setupServer } from 'msw/node';
+import user from './mocks/user.json' assert { type: 'json' };
  
 let requestCount = 0
 const userStore = {
@@ -135,4 +135,4 @@ const listenMock = () => {
   server.listen()
 }
 
-module.exports = listenMock;
+export default listenMock;

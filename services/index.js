@@ -1,5 +1,7 @@
-const fastify = require('fastify')({ logger: true });
-const listenMock = require('../mock-server');
+import Fastify from 'fastify';
+import listenMock from '../mock-server/index.js';
+
+const fastify = Fastify({ logger: true });
 
 fastify.get('/getUsers', async (request, reply) => {
     const resp = await fetch('http://event.com/getUsers');
