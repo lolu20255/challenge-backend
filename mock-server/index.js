@@ -1,6 +1,5 @@
 import { http, HttpResponse, delay } from 'msw';
 import { setupServer } from 'msw/node';
-import user from './mocks/user.json' assert { type: 'json' };
  
 let requestCount = 0
 const userStore = {
