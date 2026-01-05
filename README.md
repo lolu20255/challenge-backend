@@ -83,3 +83,9 @@ ___
 - Feature: Added ESLint configuration for code quality
 - Feature: Documented API endpoints with curl examples
 - Feature: Organized code into modular services and routes. When app grows we can scale it better with clear separation of concerns and maintainability. After endpoints starts to grow we should consider extracting business logic into separate service modules like controllers and data access layers.
+
+## Task Two
+
+- Discover: Identified performance bottleneck in `/getEventsByUserId` endpoint due to sequential API calls
+- Fix: Implemented parallel API calls using Promise.all to improve performance
+- Feature: Added error handling for individual API call failures while still returning successful results
